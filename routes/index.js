@@ -39,8 +39,32 @@ router.get('/fish', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
-    res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url})
+    res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url, userId: req.session.user.id})
   }
+})
+
+router.post('/fish', (req, res, next) => {
+  console.log(req.body);
+  var entry = {
+    date: req.body.date,
+    img: req.body.fishimg,
+    lake: req.body.lake,
+    length: req.body.length,
+    species: req.body.species
+    }
+
+    User.findOneAndUpdate(req.body.id, { $push: { basket: entry } },
+      function(err, results) {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(results)
+        }
+    });
+  // User.findOneAndUpdate(req.body.userId {$push: {basket: entry}} function(err, results) {
+  //   console.log('inside find and update')
+  //   console.log(results)
+  // })
 })
 
 router.get('/basket', (req, res, next) => {

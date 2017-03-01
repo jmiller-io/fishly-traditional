@@ -6,10 +6,10 @@
   <a class="menu" href="/auth/logout">logout</a>
 </nav>
 <section>
-  <form id="newCatch">
+  <form id="newCatch" method="POST" action="/fish" enctype="multipart/form-data">
     <div class="input">
         <label for="img">Image</label>
-        <input type="file" name="myimg" required>
+        <input type="file" name="fishImg">
     </div>
     <div class="input">
       <label for="lake">Lake Caught on:</label>
@@ -26,6 +26,9 @@
     <div class="input">
       <label for="date">Date Caught:</label>
       <input type="text" id="date" name="date" placeholder="Enter Date of Catch">
+    </div>
+    <div>
+      <input type="text" name="userId" value="{{userId}}">
     </div>
     <div>
       <input type="submit" value="Add Catch">
