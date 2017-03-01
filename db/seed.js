@@ -11,7 +11,7 @@ const lake = require('../models/lake.js');
 // l.save();
 
 var f = new Fish({
-  img: 'http://www.gameandfishmag.com/files/2016/04/Post-spawn_walleye_fishing.jpg',
+  imgURL: 'http://www.gameandfishmag.com/files/2016/04/Post-spawn_walleye_fishing.jpg',
   lake: 'Lake Minnetonka',
   length: 24,
   species: 'Walleye'
