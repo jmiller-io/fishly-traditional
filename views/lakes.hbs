@@ -7,5 +7,7 @@
 </nav>
 <section>
   {{title}}
-  <a href="/lake/{{lakes._id}}">{{lakes.name}} ({{lakes.caught.length}})</a>
+  {{#each lakes}}
+  <a href="/lake/{{this._id}}">{{this.name}} ({{this.caught.length}})</a>
+  {{/each}}
 </section>

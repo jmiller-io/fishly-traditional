@@ -19,7 +19,7 @@ router.get('/lakes', (req, res, next) => {
     res.render('index', {title: 'Fish.ly'})
   } else {
     Lake.find({}, function (err, results) {
-      res.render('lakes', {title: 'All Lakes', avatar: req.session.user.image.url, name: req.session.user.name, lakes: results[0]})
+      res.render('lakes', {title: 'All Lakes', avatar: req.session.user.image.url, name: req.session.user.name, lakes: results})
     })
   }
 })
@@ -29,7 +29,7 @@ router.get('/lake/:id', (req, res, next) => {
     res.render('index', {title: 'Fish.ly'})
   } else {
     Lake.findById({_id: req.params.id}, function (err, results) {
-      res.render('lake', {title: 'All Fish From Lake', avatar: req.session.user.image.url, name: req.session.user.name, lake: results})
+      res.render('lake', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, lake: results})
     })
   }
 })
