@@ -3,6 +3,7 @@ const router = express.Router();
 const handlebars = require('handlebars');
 const User = require('../models/user.js');
 const Lake = require('../models/lake.js');
+const Fish = require('../models/fish.js');
 
 router.get('/', (req, res, next) => {
   if (!req.session.user) {
@@ -45,16 +46,24 @@ router.get('/fish', (req, res, next) => {
 
 router.post('/fish', (req, res, next) => {
   console.log(req.body);
-  var entry = {
+  // var entry = {
+  //   date: req.body.date,
+  //   imgURL: req.body.fishImg,
+  //   lake: req.body.lake,
+  //   length: req.body.length,
+  //   species: req.body.species
+  // }
+  var f = new Fish.Fish({
     date: req.body.date,
     imgURL: req.body.fishImg,
     lake: req.body.lake,
     length: req.body.length,
     species: req.body.species
-  }
+  })
+  f.save();
 
   // Add fish to user
-  User.findOneAndUpdate(req.body.userId, { $push: { basket: entry } },
+  User.findOneAndUpdate(req.body.userId, { $push: { basket: f } },
     function(err, results) {
       if (err) {
         res.send(err)
@@ -67,12 +76,20 @@ router.post('/fish', (req, res, next) => {
             console.log('no existing lake in db')
             var l = new Lake({
               name: req.body.lake,
+              caught: f
             })
             l.save();
           }
           else if(results) {
             console.log('lake exists in db')
-            // Lake.findOneAndUpdate({name: req.body.lake}, { $push: {catch: }})
+            Lake.findOneAndUpdate({name: req.body.lake}, { $push: {caught: f}},
+              function(err, results) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(results)
+                }
+              })
           }
         })
         res.redirect('/basket')

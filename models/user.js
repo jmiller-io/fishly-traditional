@@ -5,7 +5,7 @@ var UserSchema = new mongoose.Schema({
   _id: Number,
   name: String,
   avatar: String,
-  basket: [FishSchema]
+  basket: [FishSchema.FishSchema]
 })
 
 var User = mongoose.model('User', UserSchema);
