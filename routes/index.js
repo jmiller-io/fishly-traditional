@@ -25,4 +25,22 @@ router.get('/lakes', (req, res, next) => {
   }
 })
 
+router.get('/fish', (req, res, next) => {
+  if (!req.session.user) {
+    res.render('index', {title: 'Fish.ly'})
+  } else {
+    res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url})
+  }
+})
+
+router.get('/basket', (req, res, next) => {
+  if (!req.session.user) {
+    res.render('index', {title: 'Fish.ly'})
+  } else {
+    User.findById({_id: req.session.user.id}, function(err, results) {
+      res.render('basket', {title: 'basket', avatar: req.session.user.image.url, fish: results.basket})
+    })
+  }
+})
+
 module.exports = router
