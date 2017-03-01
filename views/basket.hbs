@@ -5,6 +5,37 @@
   <a class="menu" href="/basket">My Basket</a>
   <a class="menu" href="/auth/logout">logout</a>
 </nav>
-<section>
-All Ur Fish Go Here
+<section class="posting">
+  <div class="current_entry_data">
+    <img class="fish_img" src="#">
+    <p><span class="headings">Length: </span>{{fish.length}}</p>
+    <p><span class="headings">Species: </span>{{fish.species}}</p>
+    <p><span class="headings">Lake Caught On: </span>{{fish.lake}}</p>
+    <p><span class="headings">Date Caught: </span>{{fish.date}}</p>
+  </div>
+  <form id="updateForm" method="POST" action="/">
+        <div class="input">
+          <label for="img">Image</label>
+          <input type="file" name="myimg" required>
+        </div>
+        <div class="input">
+          <label for="lake">Lake Caught on:</label>
+          <input type="text" id="lake" name="lake" placeholder="Enter Lake">
+        </div>
+        <div class="input">
+          <label for="species">Species:</label>
+          <input type="text" id="species" name="species" placeholder="Enter Fish Species">
+        </div>
+        <div class="input">
+          <label for="measurement">Fish Size:</label>
+          <input type="text" id="measurement" name="measurement" placeholder="Enter Size">
+        </div>
+        <div class="input">
+          <label for="date">Date Caught:</label>
+          <input type="text" id="date" name="date" placeholder="Enter Date of Catch">
+        </div>
+        <div>
+          <input type="submit" value="Update Catch">
+        </div>
+      </form>
 </section>

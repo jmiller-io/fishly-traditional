@@ -34,3 +34,36 @@ img.avatar {
   padding-left: 1em;
   padding-right: .4em;
 }
+
+.fish_img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#updateForm {
+  position: absolute;
+  display: inline-block;
+  float: right;
+  height: 300px;
+  white-space: normal;
+}
+
+.current_entry_data {
+  display: inline-block;
+  float: left;
+  width: 50%;
+  white-space: normal;
+}
+
+.posting {
+  position: relative;
+  height: 300px;
+  width: 90%;
+  margin-bottom: 6%;
+  white-space: nowrap;
+}
+
+.headings {
+  font-weight: bold;
+  line-height: 0;
+}
