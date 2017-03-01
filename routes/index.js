@@ -78,10 +78,6 @@ router.post('/fish', (req, res, next) => {
         res.redirect('/basket')
       }
     });
-  // User.findOneAndUpdate(req.body.userId {$push: {basket: entry}} function(err, results) {
-  //   console.log('inside find and update')
-  //   console.log(results)
-  // })
 })
 
 router.get('/basket', (req, res, next) => {
