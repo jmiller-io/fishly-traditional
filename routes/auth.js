@@ -5,13 +5,12 @@ const router = express.Router();
 const client_id = process.env.GOOGLE_CLIENT_ID;
 const client_secret = process.env.GOOGLE_CLIENT_SECRET;
 
-
 // redirect to oauth provider
 router.get('/login', (req, res, next) => {
   if(!process.env.prod) {
     var redirect_uri = 'http://127.0.0.1:3000/auth/callback';
   } else {
-    var redirect_uri = 'https://arcane-wave-24103.herokuapp.com/auth/callback'
+    var redirect_uri = 'HEROKU APP URL'
   }
 
   const url = 'https://accounts.google.com/o/oauth2/v2/auth'
@@ -23,7 +22,7 @@ router.get('/callback', (req, res, next) => {
   if(!process.env.prod) {
     var redirect_uri = 'http://127.0.0.1:3000/auth/callback';
   } else {
-    var redirect_uri = 'https://arcane-wave-24103.herokuapp.com/auth/callback'
+    var redirect_uri = 'HEROKU APP URL'
   }
   const {code, state} = req.query;
   const url = 'https://www.googleapis.com/oauth2/v4/token';
