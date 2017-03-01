@@ -52,11 +52,29 @@ router.post('/fish', (req, res, next) => {
     length: req.body.length,
     species: req.body.species
   }
+
+  // Add fish to user
   User.findOneAndUpdate(req.body.userId, { $push: { basket: entry } },
     function(err, results) {
       if (err) {
         res.send(err)
       } else {
+        Lake.findOne({name: req.body.lake}, function(err, results) {
+          if (err) {
+            console.log(err)
+          }
+          if (!results) {
+            console.log('no existing lake in db')
+            var l = new Lake({
+              name: req.body.lake,
+            })
+            l.save();
+          }
+          else if(results) {
+            console.log('lake exists in db')
+            // Lake.findOneAndUpdate({name: req.body.lake}, { $push: {catch: }})
+          }
+        })
         res.redirect('/basket')
       }
     });
