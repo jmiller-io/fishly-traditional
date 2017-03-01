@@ -29,9 +29,13 @@ router.get('/lake/:id', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
-    Lake.findById({_id: req.params.id}, function (err, results) {
-      res.render('lake', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, lake: results})
-    })
+    Lake.findOne({_id: req.params.id})
+      .populate('caught')
+      .exec(function (err, results) {
+        if (err) console.log(err)
+          console.log(results)
+          res.render('lake', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.caught})
+      })
   }
 })
 
@@ -45,7 +49,7 @@ router.get('/fish', (req, res, next) => {
 })
 
 router.post('/fish', (req, res, next) => {
-  console.log(req.body);
+  //console.log(req.body);
   // var entry = {
   //   date: req.body.date,
   //   imgURL: req.body.fishImg,
@@ -85,9 +89,9 @@ router.post('/fish', (req, res, next) => {
             Lake.findOneAndUpdate({name: req.body.lake}, { $push: {caught: f}},
               function(err, results) {
                 if (err) {
-                  console.log(err)
+                  // console.log(err)
                 } else {
-                  console.log(results)
+                  // console.log(results)
                 }
               })
           }

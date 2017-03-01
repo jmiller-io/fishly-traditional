@@ -7,5 +7,13 @@
 </nav>
 <section>
   {{title}}
-  {{lake.name}}
+  {{#each fish}}
+  <div>
+    <img class="fish_img" src="http://sepond.com/images/uploads/content/fish/38/smallmouth-bass__medium.jpg">
+    <p><span class="headings">Length: </span>{{this.length}}</p>
+    <p><span class="headings">Species: </span>{{this.species}}</p>
+    <p><span class="headings">Lake Caught On: </span>{{this.lake}}</p>
+    <p><span class="headings">Date Caught: </span>{{this.date}}</p>
+  </div>
+  {{/each}}
 </section>
