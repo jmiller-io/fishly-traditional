@@ -1,5 +1,11 @@
+@font-face {
+  font-family: prstartk;
+  src:  url('../vendors/prstartk.ttf');
+}
+
 body {
-margin-top: 4%;
+margin-top: 6%;
+font-family: prstartk;
 }
 nav {
   background-color: #795548;
@@ -11,7 +17,6 @@ nav {
   width: 100%;
 }
 nav a {
-  font-family: Helvetica;
   font-weight: 300;
   text-decoration: none;
   color: white;
