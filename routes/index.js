@@ -259,7 +259,13 @@ router.get('/walloffame', (req, res, next) => {
   if(!req.session.user){
     res.redirect('/')
   } else {
-    res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name})
+    Lake.find({})
+      .populate('caught')
+      .exec(function(err, results) {
+        console.log(results)
+        res.send(results)
+      })
+    // res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name})
   }
 })
 
