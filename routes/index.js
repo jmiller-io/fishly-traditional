@@ -59,7 +59,7 @@ router.get('/lake/:id', (req, res, next) => {
   }
 })
 
-
+// Handle Request for fish page
 router.get('/fish', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
@@ -69,6 +69,7 @@ router.get('/fish', (req, res, next) => {
   }
 })
 
+// Handle Fish Creation
 router.post('/fish', upload.any(), (req, res, next) => {
   var file = generateRandomFileName(req.files[0])
   s3.putObject({
@@ -124,6 +125,7 @@ router.post('/fish', upload.any(), (req, res, next) => {
 })
 
 
+// Handles deletion of fish
 router.delete('/fish/:id', function(req, res, next) {
   console.log(req.params.id)
   console.log(req.query.lake)
@@ -151,12 +153,27 @@ router.delete('/fish/:id', function(req, res, next) {
 })
 
 // Update Fish
-router.post('/fish/:id', function(req, res, next) {
+router.post('/fish/:id', upload.any(), function(req, res, next) {
   var entry = {};
   for (var key in req.body) {
     if (req.body[key] !== "") {
       entry[key] = req.body[key]
     }
+  }
+
+  if(req.files[0]) {
+    var file = generateRandomFileName(req.files[0]);
+    entry['imgURL'] = 'https://fishly-app.s3.amazonaws.com/' + file
+    s3.putObject({
+      Bucket: process.env.S3_BUCKET_FISHLY,
+      Key: file,
+      Body: req.files[0].buffer,
+      ACL: 'public-read'
+    }, function(err) {
+      if (err) {
+        return res.status(400).send(err)
+      }
+    })
   }
 
   // remove reference from old lake
@@ -194,7 +211,7 @@ router.post('/fish/:id', function(req, res, next) {
         })
     })
   }
-  console.log(entry)
+  console.log('hello?')
   // Updates fish document
   Fish.Fish.update({_id: req.params.id}, entry, function(err, results) {
     if (err) {

@@ -14,7 +14,7 @@
     <p><span class="headings">Date Caught: </span>{{this.date}}</p>
     <p><button id="{{this.id}}?lake={{this.lake}}" class="rm_fish_btn">Let Fish Go</button></p>
   </div>
-  <form id="updateForm" method="POST" action="/fish/{{this.id}}">
+  <form id="updateForm" method="POST" action="/fish/{{this.id}}" enctype="multipart/form-data">
         <div class="input">
           <label for="img">Image</label>
           <input type="file" name="myimg">
