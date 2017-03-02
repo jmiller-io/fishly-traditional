@@ -5,9 +5,9 @@
 <h1 class="centered ">Wall O' Fame</h1>
 <section>
   <table id="wof">
-  <tr><td class="th">Lake</td><td class="th">User</td><td class="th">Fish</td><td class="th">Details</td>
+  <tr><td class="th">Lake</td><td class="th">User</td><td class="th">Trophy Catch</td><td class="th">Details</td>
   {{#each highScores}}
-  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}}-pound<br>{{this.species}}</td></tr>
+  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}}-pound<br>{{this.species}} <br><br>Caught On:<br> {{this.date}}</td></tr>
   {{/each}}
   </table>
 </section>
