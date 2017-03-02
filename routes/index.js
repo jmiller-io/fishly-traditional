@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/lakes', (req, res, next) => {
   if (!req.session.user) {
-    res.render('index', {title: 'Fish.ly'})
+    res.redirect('/')
   } else {
     Lake.find({}, function (err, results) {
       res.render('lakes', {title: 'All Lakes', avatar: req.session.user.image.url, name: req.session.user.name, lakes: results})
@@ -47,7 +47,7 @@ router.get('/lakes', (req, res, next) => {
 
 router.get('/lake/:id', (req, res, next) => {
   if (!req.session.user) {
-    res.render('index', {title: 'Fish.ly'})
+    res.redirect('/')
   } else {
     Lake.findOne({_id: req.params.id})
       .populate('caught')
@@ -62,7 +62,7 @@ router.get('/lake/:id', (req, res, next) => {
 // Handle Request for fish page
 router.get('/fish', (req, res, next) => {
   if (!req.session.user) {
-    res.render('index', {title: 'Fish.ly'})
+    res.redirect('/')
   } else {
     console.log(req.session.user)
     res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url, userId: req.session.user.id, username: req.session.user.name.givenName})
@@ -160,6 +160,7 @@ router.delete('/fish/:id', function(req, res, next) {
   })
 })
 
+
 // Update Fish
 router.post('/fish/:id', upload.any(), function(req, res, next) {
   var entry = {};
@@ -240,7 +241,7 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
 
 router.get('/basket', (req, res, next) => {
   if (!req.session.user) {
-    res.render('index', {title: 'Fish.ly'})
+    res.redirect('/')
   } else {
     User.findOne({_id: req.session.user.id})
       .populate('basket')
@@ -249,6 +250,16 @@ router.get('/basket', (req, res, next) => {
           console.log(results)
           res.render('basket', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
       })
+  }
+})
+
+
+// Wall of Fame
+router.get('/walloffame', (req, res, next) => {
+  if(!req.session.user){
+    res.redirect('/')
+  } else {
+    res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name})
   }
 })
 
