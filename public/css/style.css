@@ -131,3 +131,7 @@ a {
 .lake_link {
   text-align: center;
 }
+
+.rm_fish_btn:hover {
+  color: red;
+}

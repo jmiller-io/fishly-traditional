@@ -5,7 +5,7 @@
 <table>
 <tr><td class="th">Fish</td><td class="th">Weight</td><td class="th">Caught On</td><td class="th">Date Caught</td><td class="th">Form</td></tr>
 {{#each fish}}
-<tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}} pounds</td><td>{{this.lake}}</td><td>{{this.date}}</td><td><a id="{{this.id}}?lake={{this.lake}}" class="rm_fish_btn" class="rm_fish_btn">Let Fish Go</a><br><a href="#" class="edit_fish">Edit Fish</a><br><form id="updateForm" method="POST" action="/fish/{{this.id}}" style="display: none" enctype="multipart/form-data">
+<tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}} pounds</td><td>{{this.lake}}</td><td>{{this.date}}</td><td><a id="{{this.id}}?lake={{this.lake}}" class="rm_fish_btn">Let Fish Go</a><br><a href="#" class="edit_fish">Edit Fish</a><br><form id="updateForm" method="POST" action="/fish/{{this.id}}" style="display: none" enctype="multipart/form-data">
         <div class="input">
           <!-- <label for="img">Image</label> -->
           <input type="file" name="myimg">
