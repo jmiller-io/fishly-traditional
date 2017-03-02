@@ -262,10 +262,14 @@ router.get('/walloffame', (req, res, next) => {
     Lake.find({})
       .populate('caught')
       .exec(function(err, results) {
-        console.log(results)
-        res.send(results)
+        var highScores = [];
+        var LakeData = results;
+        LakeData.forEach(function(lake) {
+          highScores.push(lake.caught.sort(function(a,b) {return b.weight > a.weight}).shift())
+        })
+        console.log('these are the high Scores for each lake');
+        res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name, highScores: highScores})
       })
-    // res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name})
   }
 })
 

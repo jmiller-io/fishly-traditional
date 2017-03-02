@@ -19,9 +19,10 @@ nav {
 nav a {
   font-weight: 300;
   text-decoration: none;
-  color: white;
+  color: yellow;
   margin: .4em 0;
 }
+
 
 img.avatar {
   width: 1.7em;

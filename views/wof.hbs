@@ -3,3 +3,19 @@
   <a class="menu" href="/lakes">Lakes</a>
 </nav>
 {{title}}
+<section>
+  <table>
+  <th><td>Lake</td><td>User</td><td>Weight</td><td>Species</td><td>Fish</td></th>
+  {{#each highScores}}
+  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td>{{this.weight}} pound</td><td>{{this.species}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td></tr>
+  <!-- <div>
+    <img class="fish_img" src={{this.imgURL}}>
+
+    <p><span class="headings">User: </span>{{this.username}}</p>
+    <p><span class="headings">Weight: </span>{{this.weight}}</p>
+    <p><span class="headings">Species: </span>{{this.species}}</p>
+    <p><span class="headings">Lake Caught On: </span>{{this.lake}}</p>
+  </div> -->
+  {{/each}}
+  </table>
+</section>
