@@ -105,6 +105,7 @@ router.post('/fish', (req, res, next) => {
 
 router.delete('/fish/:id', function(req, res, next) {
   console.log(req.params.id)
+  console.log(req.query.lake)
   Fish.Fish.remove({_id: req.params.id}, function(err) {
     if (err) {
       console.log(err)
@@ -117,7 +118,7 @@ router.delete('/fish/:id', function(req, res, next) {
           console.log('deleted reference from user')
         }
       })
-      Lake.findOneAndUpdate({name: 'whateva lake'}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
+      Lake.findOneAndUpdate({name: `${req.query.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
         if (err) {
           console.log(err)
         } else {
