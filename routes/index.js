@@ -44,6 +44,7 @@ router.get('/fish', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
+    console.log(req.session.user)
     res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url, userId: req.session.user.id})
   }
 })
@@ -101,13 +102,39 @@ router.post('/fish', (req, res, next) => {
     });
 })
 
+
+router.delete('/fish/:id', function(req, res, next) {
+  console.log(req.params.id)
+  Fish.Fish.remove({_id: req.params.id}, function(err) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('deleted from db')
+    }
+  })
+  User.findOne({_id: req.session.user.id})
+      .populate('basket')
+      .exec(function (err, results) {
+        if (err) console.log(err)
+          console.log(results)
+          res.render('basket', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
+      })
+})
+
 router.get('/basket', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
-    User.findById({_id: req.session.user.id}, function(err, results) {
-      res.render('basket', {title: 'basket', avatar: req.session.user.image.url, fish: results.basket})
-    })
+    // User.findById({_id: req.session.user.id}, function(err, results) {
+    //   res.render('basket', {title: 'basket', avatar: req.session.user.image.url, fish: results.basket})
+    // })
+    User.findOne({_id: req.session.user.id})
+      .populate('basket')
+      .exec(function (err, results) {
+        if (err) console.log(err)
+          console.log(results)
+          res.render('basket', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
+      })
   }
 })
 
