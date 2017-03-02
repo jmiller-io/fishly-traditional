@@ -9,6 +9,8 @@ var FishSchema = new mongoose.Schema({
 })
 
 var Fish  = mongoose.model('Fish', FishSchema);
+
+
 module.exports = {
   FishSchema: FishSchema,
   Fish: Fish

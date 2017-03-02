@@ -110,15 +110,22 @@ router.delete('/fish/:id', function(req, res, next) {
       console.log(err)
     } else {
       console.log('deleted from db')
+      User.findOneAndUpdate({_id: req.session.user.id}, {$pull: {basket: req.params.id}}, {new: true}, function(err, removedFromUser) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('deleted reference from user')
+        }
+      })
+      Lake.findOneAndUpdate({name: 'whateva lake'}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('deleted reference from lake')
+        }
+      })
     }
   })
-  User.findOne({_id: req.session.user.id})
-      .populate('basket')
-      .exec(function (err, results) {
-        if (err) console.log(err)
-          console.log(results)
-          res.render('basket', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
-      })
 })
 
 router.get('/basket', (req, res, next) => {
