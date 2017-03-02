@@ -4,6 +4,26 @@ const handlebars = require('handlebars');
 const User = require('../models/user.js');
 const Lake = require('../models/lake.js');
 const Fish = require('../models/fish.js');
+const multer = require('multer');
+const AWS = require('aws-sdk');
+const generateRandomFileName = require('../lib/generateRandomFileName.js');
+
+// MULTER
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
+
+
+
+// AWS
+const s3 = new AWS.S3();
+AWS.config.update(
+  {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
+);
+
 
 router.get('/', (req, res, next) => {
   if (!req.session.user) {
@@ -49,46 +69,45 @@ router.get('/fish', (req, res, next) => {
   }
 })
 
-router.post('/fish', (req, res, next) => {
-  //console.log(req.body);
-  // var entry = {
-  //   date: req.body.date,
-  //   imgURL: req.body.fishImg,
-  //   lake: req.body.lake,
-  //   length: req.body.length,
-  //   species: req.body.species
-  // }
-  var f = new Fish.Fish({
-    date: req.body.date,
-    imgURL: req.body.fishImg,
-    lake: req.body.lake,
-    measurement: req.body.measurement,
-    species: req.body.species,
-    username: req.body.user
-  })
-  f.save();
-
-  // Add fish to user
-  User.findOneAndUpdate(req.body.userId, { $push: { basket: f } },
-    function(err, results) {
-      if (err) {
-        res.send(err)
-      } else {
-        Lake.findOne({name: req.body.lake}, function(err, results) {
-          if (err) {
-            console.log(err)
-          }
-          if (!results) {
-            console.log('no existing lake in db')
-            var l = new Lake({
-              name: req.body.lake,
-              caught: f
-            })
-            l.save();
-          }
-          else if(results) {
-            console.log('lake exists in db')
-            Lake.findOneAndUpdate({name: req.body.lake}, { $push: {caught: f}},
+router.post('/fish', upload.any(), (req, res, next) => {
+  var file = generateRandomFileName(req.files[0])
+  s3.putObject({
+    Bucket: process.env.S3_BUCKET_FISHLY,
+    Key: file,
+    Body: req.files[0].buffer,
+    ACL: 'public-read'
+  }, function(err) {
+    if (err) return res.status(400).send(err);
+      var f = new Fish.Fish({
+        date: req.body.date,
+        imgURL: 'https://fishly-app.s3.amazonaws.com/' + file,
+        lake: req.body.lake,
+        measurement: req.body.measurement,
+        species: req.body.species,
+        username: req.body.user
+      })
+      f.save();
+      // Add fish to user
+      User.findOneAndUpdate(req.body.userId, { $push: { basket: f } },
+      function(err, results) {
+        if (err) {
+          res.send(err)
+        } else {
+          Lake.findOne({name: req.body.lake}, function(err, results) {
+            if (err) {
+              console.log(err)
+            }
+            if (!results) {
+              console.log('no existing lake in db')
+              var l = new Lake({
+                name: req.body.lake,
+                caught: f
+              })
+              l.save();
+            }
+            else if (results) {
+              console.log('lake exists in db')
+              Lake.findOneAndUpdate({name: req.body.lake}, { $push: {caught: f}},
               function(err, results) {
                 if (err) {
                   // console.log(err)
@@ -96,11 +115,12 @@ router.post('/fish', (req, res, next) => {
                   // console.log(results)
                 }
               })
-          }
-        })
+            }
+          })
         res.redirect('/basket')
-      }
+        }
     });
+  })
 })
 
 
