@@ -1,12 +1,13 @@
-require('dotenv').config()
-const express = require('express')
-const favicon = require('serve-favicon')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const hbs = require('express-handlebars')
-const morgan = require('morgan')
-const path = require('path')
-const app = express()
+require('dotenv').config();
+const express = require('express');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const hbs = require('express-handlebars');
+const morgan = require('morgan');
+const path = require('path');
+const multer = require('multer');
+const app = express();
 
 // CONFIG
 require('./db/config')
