@@ -138,7 +138,44 @@ router.post('/fish/:id', function(req, res, next) {
       entry[key] = req.body[key]
     }
   }
+
+  // remove reference from old lake
+  if (entry.lake) {
+    Fish.Fish.findOne({_id: req.params.id}, function(err, fish) {
+      Lake.findOneAndUpdate({name: `${fish.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('deleted reference from lake')
+        }
+      })
+      // find new lake
+      Lake.findOne({name: entry.lake}, function(err, results) {
+          if (err) {
+            console.log(err)
+          }
+          if (!results) {
+            console.log('no existing lake in db')
+            var l = new Lake({
+              name: entry.lake,
+              caught: fish
+            })
+            l.save();
+          }
+          else if(results) {
+            console.log('lake exists in db')
+            Lake.findOneAndUpdate({name: entry.lake}, { $push: {caught: fish}},
+              function(err, results) {
+                if (err) {
+                } else {
+                }
+              })
+          }
+        })
+    })
+  }
   console.log(entry)
+  // Updates fish document
   Fish.Fish.update({_id: req.params.id}, entry, function(err, results) {
     if (err) {
       console.log(err)
@@ -153,9 +190,6 @@ router.get('/basket', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
-    // User.findById({_id: req.session.user.id}, function(err, results) {
-    //   res.render('basket', {title: 'basket', avatar: req.session.user.image.url, fish: results.basket})
-    // })
     User.findOne({_id: req.session.user.id})
       .populate('basket')
       .exec(function (err, results) {
