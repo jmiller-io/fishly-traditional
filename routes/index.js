@@ -40,7 +40,7 @@ router.get('/lakes', (req, res, next) => {
     res.redirect('/')
   } else {
     Lake.find({}, function (err, results) {
-      res.render('lakes', {title: 'All Lakes', avatar: req.session.user.image.url, name: req.session.user.name, lakes: results})
+      res.render('lakes', {title: 'All Fish.ly Lakes', avatar: req.session.user.image.url, name: req.session.user.name, lakes: results})
     })
   }
 })
@@ -54,7 +54,7 @@ router.get('/lake/:id', (req, res, next) => {
       .exec(function (err, results) {
         if (err) console.log(err)
           console.log(results)
-          res.render('lake', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.caught})
+          res.render('lake', {title: 'Lake', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.caught})
       })
   }
 })
@@ -248,7 +248,7 @@ router.get('/basket', (req, res, next) => {
       .exec(function (err, results) {
         if (err) console.log(err)
           console.log(results)
-          res.render('basket', {title: 'All Fish From:', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
+          res.render('basket', {title: 'My Fish.ly Basket', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
       })
   }
 })
@@ -268,7 +268,7 @@ router.get('/walloffame', (req, res, next) => {
           highScores.push(lake.caught.sort(function(a,b) {return b.weight > a.weight}).shift())
         })
         console.log('these are the high Scores for each lake');
-        res.render('wof', {title: "Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name, highScores: highScores})
+        res.render('wof', {title: "Fish.ly Wall O' Fame", avatar: req.session.user.image.url, name: req.session.user.name, highScores: highScores})
       })
   }
 })

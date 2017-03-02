@@ -4,7 +4,6 @@
   <a class="menu" href="/fish">Add Catch</a>
   <a class="menu" href="/basket">My Basket</a>
 </nav>
-<section>
   <form id="newCatch" method="POST" action="/fish" enctype="multipart/form-data">
     <div class="input">
         <label for="img">Image</label>
@@ -12,19 +11,19 @@
     </div>
     <div class="input">
       <label for="lake">Lake Caught on:</label>
-      <input type="text" id="lake" name="lake" placeholder="Enter Lake">
+      <input type="text" id="lake" name="lake">
     </div>
     <div class="input">
       <label for="species">Species:</label>
-      <input type="text" id="species" name="species" placeholder="Enter Fish Species">
+      <input type="text" id="species" name="species">
     </div>
     <div class="input">
-      <label for="weight">Fish Size:</label>
-      <input type="text" id="weight" name="weight" placeholder="Enter Size">
+      <label for="weight">Weight:</label>
+      <input type="text" id="weight" name="weight">
     </div>
     <div class="input">
       <label for="date">Date Caught:</label>
-      <input type="text" id="date" name="date" placeholder="Enter Date of Catch">
+      <input type="text" id="date" name="date">
     </div>
     <div>
       <input type="submit" value="Add Catch">
@@ -34,4 +33,3 @@
       <input type="text" name="userId" value="{{userId}}">
     </div>
   </form>
-</section>

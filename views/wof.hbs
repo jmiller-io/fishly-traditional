@@ -2,12 +2,12 @@
   <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
   <a class="menu" href="/lakes">Lakes</a>
 </nav>
-{{title}}
+<h1 class="centered">{{title}}</h1>
 <section>
-  <table>
-  <th><td>Lake</td><td>User</td><td>Weight</td><td>Species</td><td>Fish</td></th>
+  <table id="wof">
+  <tr><td>Lake</td><td>User</td><td>Weight</td><td>Species</td><td>Fish</td></tr>
   {{#each highScores}}
-  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td>{{this.weight}} pound</td><td>{{this.species}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td></tr>
+  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td>{{this.weight}} pnds</td><td>{{this.species}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td></tr>
   <!-- <div>
     <img class="fish_img" src={{this.imgURL}}>
 

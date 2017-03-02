@@ -80,8 +80,8 @@ img.avatar {
 .signin_btn {
   text-decoration: none;
   color: #fdf503;
-  -webkit-animation-name: prompt; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-name: prompt;
+    -webkit-animation-duration: 1.5s;
     animation-name: prompt;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
@@ -90,4 +90,30 @@ img.avatar {
 @keyframes prompt {
     from {color: #3d441f;}
     to {color: #fdf503;}
+}
+
+table {
+  border: 1px solid yellow;
+}
+
+td {
+  width: 25%;
+  border: 1px solid blue;
+  padding-bottom: 2%;
+}
+
+#newCatch {
+  border: 2px solid #fdf503;
+  border-radius: 25px;
+  margin: 0 auto;
+  width: 55%;
+}
+
+#newCatch > div {
+  margin: 1%;
+  margin-left: 3%;
+}
+
+#newCatch > div > input {
+  text-align: right;
 }
