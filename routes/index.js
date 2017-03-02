@@ -179,11 +179,19 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
   // remove reference from old lake
   if (entry.lake) {
     Fish.Fish.findOne({_id: req.params.id}, function(err, fish) {
-      Lake.findOneAndUpdate({name: `${fish.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
-        if (err) {
-          console.log(err)
+      Lake.findOne({name: `${fish.lake}`}, function(err, results) {
+        if (results.caught.length === 1) {
+          Lake.remove({name: fish.lake}, function(err) {
+            if (err) throw err
+          })
         } else {
-          console.log('deleted reference from lake')
+          Lake.findOneAndUpdate({name: `${fish.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log('deleted reference from lake')
+            }
+          })
         }
       })
       // find new lake
@@ -211,7 +219,6 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
         })
     })
   }
-  console.log('hello?')
   // Updates fish document
   Fish.Fish.update({_id: req.params.id}, entry, function(err, results) {
     if (err) {
