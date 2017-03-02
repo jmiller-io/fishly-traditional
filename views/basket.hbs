@@ -5,26 +5,31 @@
 <table>
 <tr><td class="th">Fish</td><td class="th">Details</td><td class="th">Caught On</td></tr>
 {{#each fish}}
-<tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}}-pound {{this.species}} from {{this.lake}} on {{this.date}}</td><td><form id="updateForm" method="POST" action="/fish/{{this.id}}" enctype="multipart/form-data">
+<tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td><span>{{this.weight}}</span> pnds</td><td>{{this.lake}}</td><td>{{this.date}}</td><td><a id="{{this.id}}?lake={{this.lake}}" class="rm_fish_btn" class="rm_fish_btn">Let Fish Go</a><br><a href="#" class="edit_fish">Edit Fish</a><br><form id="updateForm" method="POST" action="/fish/{{this.id}}" style="display: none" enctype="multipart/form-data">
         <div class="input">
+          <!-- <label for="img">Image</label> -->
           <input type="file" name="myimg">
         </div>
         <div class="input">
-          <input type="text" id="lake" name="lake" placeholder="Enter Lake Caught On">
+          <!-- <label for="lake">Lake Caught on:</label> -->
+          <input type="text" id="lake" name="lake" placeholder="Enter Lake">
         </div>
         <div class="input">
+          <!-- <label for="species">Species:</label> -->
           <input type="text" id="species" name="species" placeholder="Enter Fish Species">
         </div>
         <div class="input">
-          <input type="text" id="weight" name="weight" placeholder="Enter Fish Weight">
+          <!-- <label for="weight">Fish Size:</label> -->
+          <input type="text" id="weight" name="weight" placeholder="Enter Weight">
         </div>
         <div class="input">
+          <!-- <label for="date">Date Caught:</label> -->
           <input type="text" id="date" name="date" placeholder="Enter Date of Catch">
         </div>
         <div>
           <input class="submit_btn" type="submit" value="Update Catch">
         </div>
-      </form></tr>
+      </form></td></tr>
 <!-- <section class="posting">
   <div class="current_entry_data">
     <img class="fish_img" src="{{this.imgURL}}">

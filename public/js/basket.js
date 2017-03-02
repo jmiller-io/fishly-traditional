@@ -10,8 +10,8 @@ $('.rm_fish_btn').click(function(evt) {
   location.reload();
 })
 
-
-// PUT Request
-// $('.submit_btn').on('click', function(event) {
-//   event.preventDefault();
-// });
+// Update Posting
+$('.edit_fish').click(function(evt) {
+  console.log(evt.currentTarget)
+  evt.currentTarget.nextElementSibling.nextElementSibling.style = ''
+})
