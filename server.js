@@ -7,6 +7,7 @@ const hbs = require('express-handlebars');
 const morgan = require('morgan');
 const path = require('path');
 const multer = require('multer');
+const AWS = require('aws-sdk');
 const app = express();
 
 // CONFIG
