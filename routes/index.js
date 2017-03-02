@@ -45,7 +45,7 @@ router.get('/fish', (req, res, next) => {
     res.render('index', {title: 'Fish.ly'})
   } else {
     console.log(req.session.user)
-    res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url, userId: req.session.user.id})
+    res.render('fish', {title: 'Add a Catch', avatar: req.session.user.image.url, userId: req.session.user.id, username: req.session.user.name.givenName})
   }
 })
 
@@ -62,8 +62,9 @@ router.post('/fish', (req, res, next) => {
     date: req.body.date,
     imgURL: req.body.fishImg,
     lake: req.body.lake,
-    length: req.body.length,
-    species: req.body.species
+    measurement: req.body.measurement,
+    species: req.body.species,
+    username: req.body.user
   })
   f.save();
 

@@ -9,7 +9,7 @@
 <section class="posting">
   <div class="current_entry_data">
     <img class="fish_img" src="http://sepond.com/images/uploads/content/fish/38/smallmouth-bass__medium.jpg">
-    <p><span class="headings">Length: </span>{{this.length}}</p>
+    <p><span class="headings">Measurement: </span>{{this.measurement}}</p>
     <p><span class="headings">Species: </span>{{this.species}}</p>
     <p><span class="headings">Lake Caught On: </span>{{this.lake}}</p>
     <p><span class="headings">Date Caught: </span>{{this.date}}</p>
@@ -38,6 +38,9 @@
         </div>
         <div>
           <input type="submit" value="Update Catch">
+        </div>
+        <div>
+          <input type="text" name="user" value="${req.session.user.name}">
         </div>
       </form>
 </section>

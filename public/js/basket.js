@@ -7,4 +7,5 @@ $('.rm_fish_btn').click(function(evt) {
     url: `/fish/${evt.target.id}`,
     type: 'DELETE',
   })
+  location.reload();
 })

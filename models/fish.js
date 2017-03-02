@@ -4,8 +4,9 @@ var FishSchema = new mongoose.Schema({
   date: Date,
   imgURL: String,
   lake: String,
-  length: Number,
-  species: String
+  measurement: Number,
+  species: String,
+  username: String
 })
 
 var Fish  = mongoose.model('Fish', FishSchema);
