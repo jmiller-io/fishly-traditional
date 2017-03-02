@@ -83,7 +83,7 @@ router.post('/fish', upload.any(), (req, res, next) => {
         date: req.body.date,
         imgURL: 'https://fishly-app.s3.amazonaws.com/' + file,
         lake: req.body.lake,
-        measurement: req.body.measurement,
+        weight: req.body.weight,
         species: req.body.species,
         username: req.body.user
       })
@@ -141,11 +141,19 @@ router.delete('/fish/:id', function(req, res, next) {
           console.log('deleted reference from user')
         }
       })
-      Lake.findOneAndUpdate({name: `${req.query.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
-        if (err) {
-          console.log(err)
+      Lake.findOne({name: `${req.query.lake}`}, function(err, results) {
+        if (results.caught.length === 1) {
+          Lake.remove({name: `${req.query.lake}`}, function(err) {
+            if (err) throw err
+          })
         } else {
-          console.log('deleted reference from lake')
+          Lake.findOneAndUpdate({name: `${req.query.lake}`}, {$pull: {caught: req.params.id}}, {new: true}, function(err, removedFromLake) {
+            if (err) {
+              console.log(err)
+            } else {
+              console.log('deleted reference from lake')
+            }
+          })
         }
       })
     }

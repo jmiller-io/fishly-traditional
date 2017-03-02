@@ -4,7 +4,7 @@ var FishSchema = new mongoose.Schema({
   date: Date,
   imgURL: String,
   lake: String,
-  measurement: Number,
+  weight: Number,
   species: String,
   username: String
 })
