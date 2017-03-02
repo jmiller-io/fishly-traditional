@@ -3,7 +3,6 @@
   <a class="menu" href="/lakes">Lakes</a>
   <a class="menu" href="/fish">Add Catch</a>
   <a class="menu" href="/basket">My Basket</a>
-  <a class="menu" href="/auth/logout">logout</a>
 </nav>
 {{#each fish}}
 <section class="posting">
@@ -15,10 +14,10 @@
     <p><span class="headings">Date Caught: </span>{{this.date}}</p>
     <p><button id="{{this.id}}?lake={{this.lake}}" class="rm_fish_btn">Let Fish Go</button></p>
   </div>
-  <form id="updateForm" method="POST" action="/">
+  <form id="updateForm" method="POST" action="/fish/{{this.id}}">
         <div class="input">
           <label for="img">Image</label>
-          <input type="file" name="myimg" required>
+          <input type="file" name="myimg">
         </div>
         <div class="input">
           <label for="lake">Lake Caught on:</label>
@@ -37,10 +36,7 @@
           <input type="text" id="date" name="date" placeholder="Enter Date of Catch">
         </div>
         <div>
-          <input type="submit" value="Update Catch">
-        </div>
-        <div>
-          <input type="text" name="user" value="${req.session.user.name}">
+          <input class="submit_btn" type="submit" value="Update Catch">
         </div>
       </form>
 </section>

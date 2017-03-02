@@ -130,6 +130,25 @@ router.delete('/fish/:id', function(req, res, next) {
   })
 })
 
+// Update Fish
+router.post('/fish/:id', function(req, res, next) {
+  var entry = {};
+  for (var key in req.body) {
+    if (req.body[key] !== "") {
+      entry[key] = req.body[key]
+    }
+  }
+  console.log(entry)
+  Fish.Fish.update({_id: req.params.id}, entry, function(err, results) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.redirect('/basket')
+    }
+  })
+})
+
+
 router.get('/basket', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
@@ -148,3 +167,21 @@ router.get('/basket', (req, res, next) => {
 })
 
 module.exports = router
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
