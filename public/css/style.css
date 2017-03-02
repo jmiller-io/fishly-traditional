@@ -19,8 +19,6 @@ nav {
 }
 nav a {
   font-weight: 300;
-  text-decoration: none;
-  color: #fdf503;
   margin: .4em 0;
   margin-right: .5%;
 }
@@ -122,5 +120,14 @@ td {
 }
 
 .th {
+  text-align: center;
+}
+
+a {
+   color: #fdf503;
+   text-decoration: none;
+}
+
+.lake_link {
   text-align: center;
 }

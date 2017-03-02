@@ -5,7 +5,7 @@
 <h1 class="centered">{{title}}</h1>
 <section>
   <table id="wof">
-  <tr><td>Lake</td><td>User</td><td>Weight</td><td>Species</td><td>Fish</td></tr>
+  <tr><td class="th">Lake</td><td class="th">User</td><td class="th">Weight</td><td class="th">Species</td><td class="th">Fish</td></tr>
   {{#each highScores}}
   <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td>{{this.weight}} pnds</td><td>{{this.species}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td></tr>
   <!-- <div>

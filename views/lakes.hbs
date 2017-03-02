@@ -5,6 +5,6 @@
 </nav>
 <section>
   {{#each lakes}}
-  <a href="/lake/{{this._id}}">{{this.name}} ({{this.caught.length}})</a>
+  <a href="/lake/{{this._id}}" class="lake_link">{{this.name}} ({{this.caught.length}})</a>
   {{/each}}
 </section>

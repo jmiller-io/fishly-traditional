@@ -4,16 +4,10 @@
   <a class="menu" href="/lakes">Lakes</a>
   <a class="menu" href="/basket">My Basket</a>
 </nav>
-<section>
-  {{title}}
+<table>
+  <tr><td class="th">Fish</td><td class="th">Weight</td><td class="th">Caught On</td><td class="th">Caught By</td></tr>
   {{#each fish}}
-  <div>
-    <img class="fish_img" src="{{this.imgURL}}">
-    <p><span class="headings">weight: </span>{{this.weight}}</p>
-    <p><span class="headings">Species: </span>{{this.species}}</p>
-    <p><span class="headings">Lake Caught On: </span>{{this.lake}}</p>
-    <p><span class="headings">Date Caught: </span>{{this.date}}</p>
-    <p><span class="headings">Caught By: </span>{{this.username}}</p>
-  </div>
+  <tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}} pnds</td><td>{{this.species}}</td><td>{{this.username}}</td></tr>
+
   {{/each}}
-</section>
+  </table>
