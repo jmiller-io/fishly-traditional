@@ -6,9 +6,10 @@
 body {
 margin-top: 6%;
 font-family: prstartk;
+background-color: #3d441f;
 }
 nav {
-  background-color: #795548;
+  background-color: #4d4d4d;
   opacity: 1;
   height: 2.4em;
   top: 0;
@@ -19,7 +20,7 @@ nav {
 nav a {
   font-weight: 300;
   text-decoration: none;
-  color: yellow;
+  color: #fdf503;
   margin: .4em 0;
 }
 
@@ -28,7 +29,6 @@ img.avatar {
   width: 1.7em;
   height: 1.7em;
   margin-right: .6em;
-  /*position: relative;*/
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -36,7 +36,6 @@ img.avatar {
 
 .menu {
   float: right;
-  /*margin-left: 2%;*/
   padding-left: 1em;
   padding-right: .4em;
 }
@@ -72,4 +71,23 @@ img.avatar {
 .headings {
   font-weight: bold;
   line-height: 0;
+}
+
+.centered {
+  text-align: center;
+}
+
+.signin_btn {
+  text-decoration: none;
+  color: #fdf503;
+  -webkit-animation-name: prompt; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+    animation-name: prompt;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes prompt {
+    from {color: #3d441f;}
+    to {color: #fdf503;}
 }
