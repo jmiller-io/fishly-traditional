@@ -20,6 +20,20 @@ app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true}
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, 'views/layouts/')}))
 app.set('view engine', 'hbs')
 
+// AWS
+const s3 = new AWS.S3();
+AWS.config.update(
+  {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
+);
+
+// MULTER
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
+
 // ROUTES
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'));
