@@ -89,7 +89,7 @@ router.post('/fish', upload.any(), (req, res, next) => {
       })
       f.save();
       // Add fish to user
-      User.findOneAndUpdate(req.body.userId, { $push: { basket: f } },
+      User.findOneAndUpdate({name: req.session.user.name.givenName}, { $push: { basket: f } },
       function(err, results) {
         if (err) {
           res.send(err)
