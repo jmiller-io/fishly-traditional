@@ -35,15 +35,15 @@ npm run seed
 
 # Routes
 * Routes for auth
-** /auth/login
-** /auth/callback
-** /profile/me
+- /auth/login
+- /auth/callback
+- /profile/me
 
 * Routes for getting
-** / - get index
-** /lakes - get lakes
-** /lake/:id - get specific lake
-** /fish - create new fish
-** /fish/:id - update/delete fish
-** /basket - get basket
-** /walloffame - get wall of fame page
+- / - get index
+- /lakes - get lakes
+- /lake/:id - get specific lake
+- /fish - create new fish
+- /fish/:id - update/delete fish
+- /basket - get basket
+- /walloffame - get wall of fame page
