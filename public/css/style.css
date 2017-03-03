@@ -1,171 +1,150 @@
 @font-face {
-  font-family: prstartk;
-  src:  url('../vendors/prstartk.ttf');
+font-family:prstartk;
+src:url(../vendors/prstartk.ttf);
 }
 
 body {
-margin-top: 6%;
-font-family: prstartk;
-background-color: #3d441f;
-}
-nav {
-  background-color: #4d4d4d;
-  opacity: 1;
-  height: 2.4em;
-  top: 0;
-  z-index: 100;
-  position: fixed;
-  width: 100%;
-}
-nav a {
-  font-weight: 300;
-  margin: .4em 0;
-  margin-right: .5%;
+margin-top:6%;
+font-family:prstartk;
+background-color:#3d441f;
 }
 
+nav {
+background-color:#4d4d4d;
+opacity:1;
+height:2.4em;
+top:0;
+z-index:100;
+position:fixed;
+width:100%;
+}
+
+nav a {
+font-weight:300;
+margin:.4em .5% .4em 0;
+}
 
 img.avatar {
-  width: 1.7em;
-  height: 1.7em;
-  margin-right: .6em;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+width:1.7em;
+height:1.7em;
+margin-right:.6em;
+-webkit-border-radius:50%;
+-moz-border-radius:50%;
+border-radius:50%;
 }
 
 .menu {
-  float: right;
-  padding-left: 1em;
-  padding-right: .4em;
+float:right;
+padding-left:1em;
+padding-right:.4em;
 }
 
 .fish_img {
- /* max-width: 400px;
-  max-height: 400px;*/
-  max-width: 98%;
-  max-height: 98%;
+max-width:98%;
+max-height:98%;
 }
 
 #updateForm {
-  position: absolute;
-  display: inline-block;
-  float: right;
-  height: 300px;
-  white-space: normal;
+position:absolute;
+display:inline-block;
+float:right;
+height:300px;
+white-space:normal;
 }
 
 .current_entry_data {
-  display: inline-block;
-  float: left;
-  width: 50%;
-  white-space: normal;
+display:inline-block;
+float:left;
+width:50%;
+white-space:normal;
 }
 
 .posting {
-  position: relative;
-  height: 300px;
-  width: 90%;
-  margin-bottom: 6%;
-  white-space: nowrap;
+position:relative;
+height:300px;
+width:90%;
+margin-bottom:6%;
+white-space:nowrap;
 }
 
 .headings {
-  font-weight: bold;
-  line-height: 0;
-}
-
-.centered {
-  text-align: center;
+font-weight:700;
+line-height:0;
 }
 
 .signin_btn {
-  text-decoration: none;
-  color: #fdf503;
-  -webkit-animation-name: prompt;
-    -webkit-animation-duration: 1.5s;
-    animation-name: prompt;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
+text-decoration:none;
+color:#fdf503;
+-webkit-animation-name:prompt;
+-webkit-animation-duration:1.5s;
+animation-name:prompt;
+animation-duration:1.5s;
+animation-iteration-count:infinite;
 }
 
-@keyframes prompt {
-    from {color: #3d441f;}
-    to {color: #fdf503;}
+to {
+color:#fdf503;
 }
 
 table {
-  margin-left: 5%;
-  margin-right: 5%;
+margin-left:5%;
+margin-right:5%;
 }
 
 tr > td {
-  width: 10%;
-  padding-bottom: 2%;
-  font-size: .9em;
-  text-align: center;
+width:10%;
+padding-bottom:2%;
+font-size:.9em;
+text-align:center;
 }
 
 #newCatch {
-  border: 2px solid #fdf503;
-  border-radius: 25px;
-  margin: 0 auto;
-  width: 55%;
+border:2px solid #fdf503;
+border-radius:25px;
+width:55%;
+margin:0 auto;
 }
 
 #newCatch > div {
-  margin: 1%;
-  margin-left: 3%;
+margin:1% 1% 1% 3%;
 }
 
 #newCatch > div > input {
-  text-align: right;
+text-align:right;
 }
 
 .th {
-  text-align: center;
-  font-size: 1.2em;
-  color: lightblue;
+text-align:center;
+font-size:1.2em;
+color:#ADD8E6;
 }
 
 a {
-   color: #fdf503;
-   text-decoration: none;
+color:#fdf503;
+text-decoration:none;
 }
-
-.lake_link {
-  text-align: center;
-}
-
-.rm_fish_btn:hover {
-  color: red;
-}
-
-.rm_fish_btn {
-  font-size: .9em;
-}
-
-.edit_fish {
-  font-size: .9em;
-}
-
-.edit_fish:hover {
-  color: red;
-}
-
 
 h1 {
-  padding-bottom: 1.5%;
-}
-
-#wof_header {
-  color: orange;
-}
-
-.wof_th {
-  color: orange;
+padding-bottom:1.5%;
 }
 
 #ebasket_header {
-  color: orangered;
-  text-align: center;
+color:#FF4500;
+text-align:center;
+}
+
+.centered,.lake_link {
+text-align:center;
+}
+
+.rm_fish_btn:hover,.edit_fish:hover {
+color:red;
+}
+
+.rm_fish_btn,.edit_fish {
+font-size:.9em;
+}
+
+#wof_header,.wof_th {
+color:orange;
 }

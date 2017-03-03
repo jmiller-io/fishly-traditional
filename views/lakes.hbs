@@ -1,10 +1,9 @@
 <nav>
-  <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
-  <a class="menu" href="/basket">My Basket</a>
-  <a class="menu" href="/walloffame">Wall of Fame</a>
+    <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
+    <a class="menu" href="/basket">My Basket</a>
+    <a class="menu" href="/walloffame">Wall of Fame</a>
 </nav>
 <section>
-  {{#each lakes}}
-  <a href="/lake/{{this._id}}" class="lake_link">{{this.name}} ({{this.caught.length}})   </a>
-  {{/each}}
+    {{#each lakes}}
+    <a href="/lake/{{this._id}}" class="lake_link">{{this.name}} ({{this.caught.length}})   </a> {{/each}}
 </section>

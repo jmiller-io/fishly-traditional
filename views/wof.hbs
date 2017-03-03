@@ -1,13 +1,22 @@
 <nav>
-  <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
-  <a class="menu" href="/lakes">Lakes</a>
+    <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
+    <a class="menu" href="/lakes">Lakes</a>
 </nav>
 <h1 class="centered" id="wof_header">Wall O' Fame</h1>
 <section>
-  <table id="wof">
-  <tr><td class="wof_th">Lake</td><td class="wof_th">User</td><td class="wof_th">Trophy Catch</td><td class="wof_th">Details</td>
-  {{#each highScores}}
-  <tr><td>{{this.lake}}</td><td>{{this.username}}</td><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}}-pound<br>{{this.species}} <br><br>Caught On:<br> {{this.date}}</td></tr>
-  {{/each}}
-  </table>
+    <table id="wof">
+        <tr>
+            <td class="wof_th">Lake</td>
+            <td class="wof_th">User</td>
+            <td class="wof_th">Trophy Catch</td>
+            <td class="wof_th">Details</td>
+            {{#each highScores}}
+            <tr>
+                <td>{{this.lake}}</td>
+                <td>{{this.username}}</td>
+                <td><img class="fish_img" src="{{this.imgURL}}"></td>
+                <td>{{this.weight}}-pound<br>{{this.species}} <br><br>Caught On:<br> {{this.date}}</td>
+            </tr>
+            {{/each}}
+    </table>
 </section>

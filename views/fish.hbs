@@ -1,35 +1,35 @@
 <nav>
-  <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
-  <a class="menu" href="/lakes">Lakes</a>
-  <a class="menu" href="/fish">Add Catch</a>
-  <a class="menu" href="/basket">My Basket</a>
+    <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
+    <a class="menu" href="/lakes">Lakes</a>
+    <a class="menu" href="/fish">Add Catch</a>
+    <a class="menu" href="/basket">My Basket</a>
 </nav>
-  <form id="newCatch" method="POST" action="/fish" enctype="multipart/form-data">
+<form id="newCatch" method="POST" action="/fish" enctype="multipart/form-data">
     <div class="input">
         <label for="img">Image:</label>
         <input type="file" name="fishImg">
     </div>
     <div class="input">
-      <label for="lake">Lake Caught on:</label>
-      <input type="text" id="lake" name="lake">
+        <label for="lake">Lake Caught on:</label>
+        <input type="text" id="lake" name="lake">
     </div>
     <div class="input">
-      <label for="species">Species:</label>
-      <input type="text" id="species" name="species">
+        <label for="species">Species:</label>
+        <input type="text" id="species" name="species">
     </div>
     <div class="input">
-      <label for="weight">Weight:</label>
-      <input type="text" id="weight" name="weight">
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight">
     </div>
     <div class="input">
-      <label for="date">Date Caught:</label>
-      <input type="date" id="date" name="date">
+        <label for="date">Date Caught:</label>
+        <input type="date" id="date" name="date">
     </div>
     <div>
-      <input type="submit" value="Add Catch">
+        <input type="submit" value="Add Catch">
     </div>
     <div style="display: none">
-      <input type="text" name="user" value="{{username}}">
-      <input type="text" name="userId" value="{{userId}}">
+        <input type="text" name="user" value="{{username}}">
+        <input type="text" name="userId" value="{{userId}}">
     </div>
-  </form>
+</form>

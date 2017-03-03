@@ -1,13 +1,23 @@
 <nav>
-  <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
-  <a class="menu" href="/walloffame">Wall of Fame</a>
-  <a class="menu" href="/lakes">Lakes</a>
-  <a class="menu" href="/basket">My Basket</a>
+    <a class="menu" href="/"><img class="avatar" src="{{avatar}}" alt="avatar"></a>
+    <a class="menu" href="/walloffame">Wall of Fame</a>
+    <a class="menu" href="/lakes">Lakes</a>
+    <a class="menu" href="/basket">My Basket</a>
 </nav>
 <table>
-  <tr><td class="th">Fish</td><td class="th">Weight</td><td class="th">Species</td><td class="th">Caught By</td></tr>
-  {{#each fish}}
-  <tr><td><img class="fish_img" src="{{this.imgURL}}"></td><td>{{this.weight}} pounds</td><td>{{this.species}}</td><td>{{this.username}}</td></tr>
+    <tr>
+        <td class="th">Fish</td>
+        <td class="th">Weight</td>
+        <td class="th">Species</td>
+        <td class="th">Caught By</td>
+    </tr>
+    {{#each fish}}
+    <tr>
+        <td><img class="fish_img" src="{{this.imgURL}}"></td>
+        <td>{{this.weight}} pounds</td>
+        <td>{{this.species}}</td>
+        <td>{{this.username}}</td>
+    </tr>
 
-  {{/each}}
-  </table>
+    {{/each}}
+</table>
