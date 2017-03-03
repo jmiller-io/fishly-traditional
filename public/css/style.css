@@ -82,10 +82,6 @@ animation-duration:1.5s;
 animation-iteration-count:infinite;
 }
 
-to {
-color:#fdf503;
-}
-
 table {
 margin-left:5%;
 margin-right:5%;
@@ -152,4 +148,9 @@ color:orange;
 #lakes_wrapper {
   width: 80%;
   margin: 0 auto;
+}
+
+@keyframes prompt {
+    from {color: #3d441f;}
+    to {color: #fdf503;}
 }

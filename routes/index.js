@@ -156,11 +156,6 @@ router.post('/fish', upload.any(), (req, res, next) => {
                                     }
                                 },
                                 function(err, results) {
-                                    if (err) {
-                                        // console.log(err)
-                                    } else {
-                                        // console.log(results)
-                                    }
                                 });
                         }
                     });
@@ -189,11 +184,7 @@ router.delete('/fish/:id', function(req, res, next) {
             }, {
                 new: true
             }, function(err, removedFromUser) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('deleted reference from user');
-                }
+                if (!err) console.log('deleted reference from user')
             });
             Lake.findOne({
                 name: `${req.query.lake}`
@@ -275,11 +266,7 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
                     }, {
                         new: true
                     }, function(err, removedFromLake) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            console.log('deleted reference from lake');
-                        }
+                        if (!err) {console.log('deleted reference from lake')}
                     });
                 }
             });
@@ -307,7 +294,7 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
                             }
                         },
                         function(err, results) {
-                            if (err) {} else {}
+                            if (err) throw err
                         });
                 }
             });
@@ -317,11 +304,7 @@ router.post('/fish/:id', upload.any(), function(req, res, next) {
     Fish.Fish.update({
         _id: req.params.id
     }, entry, function(err, results) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/basket');
-        }
+        if (!err) {res.redirect('/basket')}
     });
 });
 
@@ -362,7 +345,6 @@ router.get('/walloffame', (req, res, next) => {
                         return b.weight > a.weight
                     }).shift());
                 });
-                console.log('these are the high Scores for each lake');
                 res.render('wof', {
                     title: "Fish.ly Wall O' Fame",
                     avatar: req.session.user.image.url,
