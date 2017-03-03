@@ -29,9 +29,17 @@ router.get('/', (req, res, next) => {
   if (!req.session.user) {
     res.render('index', {title: 'Fish.ly'})
   } else {
-    User.findById({_id: req.session.user.id}, function(err, results) {
-      res.render('landing', {title: 'landing', avatar: results.avatar, name: results.name, basket: results.basket})
-    })
+    User.findOne({_id: req.session.user.id})
+      .populate('basket')
+      .exec(function (err, results) {
+        if (err) console.log(err)
+          console.log(results)
+          if (results.basket.length < 1) {
+            res.render('empty_basket', {avatar: req.session.user.image.url, name: req.session.user.name})
+          } else {
+            res.render('basket', {title: 'My Fish.ly Basket', avatar: req.session.user.image.url, name: req.session.user.name, fish: results.basket})
+          }
+      })
   }
 })
 
