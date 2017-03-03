@@ -125,7 +125,7 @@ var m = new Fish.Fish({
   weight: 18,
   species: 'Largemouth Bass',
   username: 'Dude',
-  date: '2017-04-27'
+  date: '2017-01-02'
 })
 m.save()
 
