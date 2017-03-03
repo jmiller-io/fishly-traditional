@@ -1,36 +1,49 @@
-# Boilerplate
+# Fish.ly
+
+Throwback app to the good ol' days of the Fisherman's Bait arcade game.
+Compete against your friends, and strangers by uploading real life stats and photos of your largest catches to get on the Wall O' Fame and become the Masterbaiter.
+
+
+# Screen Shot
+![Image](./screenshot.png?raw=true)
 
 # Usage
 
-# Database
+Technologies Used:
+MongoDB
+ExpressJS
+NodeJS
+Amazon AWS S3 Storage
+Google OAuth
 
-`db/config.js` configures the app to work with Mongoose
 
-To create seed data, write your code in `db/seed.js`
-Then run the script with:
+# Approach
+My approach for this app was pretty simple.
+Make it look like a retro arcade game that I grew up playing.
 
-```
-$ npm run seed
-```
-
-# Style
-
-Standard is a JS module for creating a consistent style.
-
-Run it with 
+# Install Instructions
+run 
 
 ```
-$ npm run test
+npm install
 ```
 
-When possible standard will fix some styles automatically.
-Other errors will be listed in the terminal.
+To seed
+```
+npm run seed
+```
 
-# Environmental Variables
+# Routes
+* Routes for auth
+/auth/login
+/auth/callback
+/profile/me
 
-Create a `.env` for storing environmental variables. 
-They'll be automatically loaded at the top of `server.js`
-
-# Sessions
-
-Data can be set and get with `req.session`
+* Routes for getting
+/ - get index
+/lakes - get lakes
+/lake/:id - get specific lake
+/fish - create new fish
+/fish/:id - update/delete fish
+/basket - get basket
+/walloffame - get wall of fame page
