@@ -124,7 +124,7 @@ tr > td {
 .th {
   text-align: center;
   font-size: 1.2em;
-  color: orange;
+  color: lightblue;
 }
 
 a {
@@ -151,5 +151,12 @@ a {
 
 h1 {
   padding-bottom: 1.5%;
+}
+
+#wof_header {
+  color: orange;
+}
+
+.wof_th {
   color: orange;
 }
