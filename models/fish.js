@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var FishSchema = new mongoose.Schema({
-  date: Date,
+  date: String,
   imgURL: String,
   lake: String,
   weight: Number,
