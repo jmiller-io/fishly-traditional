@@ -3,7 +3,7 @@
     <a class="menu" href="/basket">My Basket</a>
     <a class="menu" href="/walloffame">Wall of Fame</a>
 </nav>
-<section>
+<section id="lakes_wrapper">
     {{#each lakes}}
     <a href="/lake/{{this._id}}" class="lake_link">{{this.name}} ({{this.caught.length}})   </a> {{/each}}
 </section>
