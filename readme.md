@@ -47,3 +47,7 @@ npm run seed
 - /fish/:id - update/delete fish
 - /basket - get basket
 - /walloffame - get wall of fame page
+
+
+Trello Link
+https://trello.com/b/La4mo3cG/fishly
