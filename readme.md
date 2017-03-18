@@ -7,14 +7,13 @@ Compete against your friends, and strangers by uploading real life stats and pho
 # Screen Shot
 ![Image](./screenshot.png?raw=true)
 
-# Usage
-
 Technologies Used:
-MongoDB
-ExpressJS
-NodeJS
-Amazon AWS S3 Storage
-Google OAuth
+* MongoDB
+* ExpressJS
+* NodeJS
+* Amazon AWS S3 Storage
+* Google OAuth
+* Heroku for hosting
 
 
 # Approach
