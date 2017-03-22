@@ -1,7 +1,7 @@
 # Fish.ly
 
 Throwback app to the good ol' days of the Fisherman's Bait arcade game.
-Compete against your friends, and strangers by uploading real life stats and photos of your largest catches to get on the Wall O' Fame and become the Masterbaiter.
+Compete against your friends, and strangers by uploading real life stats and photos of your largest catches to get on the Wall O' Fame and become the King of The Lakes.
 
 
 # Screen Shot
@@ -11,9 +11,15 @@ Technologies Used:
 * MongoDB
 * ExpressJS
 * NodeJS
+* JavaScript
+* AJAX
+* jQuery
 * Amazon AWS S3 Storage
 * Google OAuth
 * Heroku for hosting
+* HTML
+* CSS
+* Handlebars
 
 
 # Approach
